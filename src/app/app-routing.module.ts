@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './index/index.component';
-import { AuthGuard } from './auth.guard';
 import {TarefaListarComponent} from './pages/tarefa/tarefa-listar/tarefa-listar.component'
 import { TarefaCriarNovoComponent } from './pages/tarefa/tarefa-criar-novo/tarefa-criar-novo.component';
 
