@@ -1,0 +1,19 @@
+<!-- Container dos Cards Internos -->
+<link rel="manifest" href="assets/manifest.webmanifest">
+
+<div class="welcome-message">
+    <h5>{{ saudacao }}, {{ nomeUsuario }}! O que deseja fazer?</h5>
+</div>
+
+<!-- Container dos Cards Internos -->
+<div class="card-container">
+
+    <!-- Tarefa-->
+    <div class="card-custom">
+        <i class="fa-solid fa-list-check card-icon"></i>
+        <div class="card-title">Tarefa</div>
+        <button class="p-button-outline" (click)="navigateTo('/tarefa-listar')">Lista de tarefas</button>
+        <button class="p-button" (click)="navigateTo('/tarefa-criar-nova')">Adicionar tarefas</button>
+    </div>
+
+</div>

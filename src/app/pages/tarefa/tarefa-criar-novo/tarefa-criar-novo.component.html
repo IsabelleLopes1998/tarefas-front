@@ -1,0 +1,79 @@
+<div class="custom-margin">
+    <app-breadcrumb [breadcrumbs]="breadcrumbs"></app-breadcrumb>
+</div>
+
+<p-card class="custom-card-margin">
+    <p-dialog [(visible)]="isLoading" [modal]="true" [closable]="false" showHeader="false" styleClass="custom-loading-dialog">
+        <div class="loading-content">
+            <p-progressSpinner></p-progressSpinner>
+            <p class="loading-text">Processando...</p>
+        </div>
+    </p-dialog>
+
+    <form [formGroup]="tarefaForm" (ngSubmit)="salvarTarefa()">
+        <div class="d-flex align-items-center mt-0">
+            <h1 style="color: #7e3604; font-size: 18px; margin-top: -50px; margin-left: -5px;">
+                <strong>Cadastrar Tarefa</strong>
+            </h1>
+            <div class="flex-grow-1 mx-5" style="position: relative; top: -30px; margin-left: 60px; width: 100%;">
+                <hr class="divider container-fluid" style="width: 100%; margin-left: 2px; margin-right: 40px;">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label" for="titulo">Título</label>
+                <input id="titulo" type="text" class="form-control input-pequeno" pInputText formControlName="titulo"
+                       placeholder="Digite o título da tarefa"/>
+            </div>
+
+            <div class="row mt-3">
+                <label class="form-label" for="prazo">Prazo</label>
+                <p-calendar
+                    id="prazo"
+                    [showIcon]="true"
+                    [iconDisplay]="'input'"
+                    dateFormat="dd/mm/yy"
+                    placeholder="Selecione a data"
+                    formControlName="prazo"
+                    [showOnFocus]="false">
+                </p-calendar>
+            </div>
+
+            <div class="col-md-3 mt-3">
+                <p-checkbox
+                    formControlName="concluida"
+                    binary="true"
+                    label="Concluída?"
+                    inputId="concluido">
+                </p-checkbox>
+            </div>
+
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <label class="form-label" for="descricao">Descrição</label>
+                <textarea id="descricao" pInputTextarea rows="4" class="form-control" formControlName="descricao"
+                          placeholder="Digite a descrição da tarefa..."></textarea>
+            </div>
+        </div>
+
+        <!-- Botões -->
+        <div class="d-flex justify-content-left mt-4">
+            <button type="button" class="btn-limpar mx-2" (click)="limparFormulario()">Limpar</button>
+
+            <!-- Botão para cadastrar nova tarefa -->
+            <button *ngIf="!isEditing" type="submit" class="btn-salvar mx-2">
+                Cadastrar Tarefa
+            </button>
+
+            <!-- Botão para atualizar tarefa existente -->
+            <button *ngIf="isEditing" type="submit" class="btn-atualizar mx-2">
+                Atualizar Tarefa
+            </button>
+        </div>
+    </form>
+</p-card>
+
+<p-toast></p-toast>
