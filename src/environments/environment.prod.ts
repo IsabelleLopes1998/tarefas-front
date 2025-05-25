@@ -1,5 +1,4 @@
 export const environment = {
     production: true,
-    apiBaseUrl: 'https://somelicontabilidadeback.onrender.com', // Backend no Render
+    apiBaseUrl: 'http://54.166.83.75:8080'
   };
-  

@@ -1,19 +1,11 @@
-# Usa uma imagem com Node
-FROM node:18
-
-# Define diretório de trabalho
+# Etapa 1: build da aplicação Angular
+FROM node:18 as build
 WORKDIR /app
-
-# Copia arquivos de dependência e instala
 COPY package*.json ./
 RUN npm install
-
-# Copia o restante do código
 COPY . .
+RUN npm run build -- --configuration production
 
-# Expõe a porta do Angular
-EXPOSE 4200
-
-# Serve a aplicação
-CMD ["npx", "ng", "serve", "--host", "0.0.0.0"]
-
+# Etapa 2: servir com Nginx
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
