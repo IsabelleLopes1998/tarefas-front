@@ -2,8 +2,7 @@
 
 export const environment = {
   production: false,
-  // apiBaseUrl: 'https://somelicontabilidadeback.onrender.com'
-  apiBaseUrl: 'http://localhost:8080',
+  apiBaseUrl: 'http://54.166.83.75:8080',
 
 };
 
