@@ -1,11 +1,5 @@
-# Etapa 1: build da aplicação Angular
-FROM node:18 as build
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build -- --configuration production
-
-# Etapa 2: servir com Nginx
+# Etapa única: servir o frontend com Nginx
 FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
+
+# Copia os arquivos já gerados no dist local para o diretório do Nginx
+COPY ./dist /usr/share/nginx/html
